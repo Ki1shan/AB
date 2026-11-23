@@ -4,7 +4,7 @@ An experimental, model-independent cognitive architecture written in Python. AB 
 
 ## License notice
 
-This release is licensed under the Business Source License 1.1 (BSL 1.1). **It is source-available, not an Open Source license.** The Additional Use Grant is `None`, so the default grant permits non-production use only. The license changes to GPL-2.0-or-later on 2030-11-23, or the fourth anniversary of this version's first public distribution, whichever comes first. See [LICENSE](LICENSE) for the complete terms.
+This release is licensed under the Business Source License 1.1 (BSL 1.1). It is source-available, not an Open Source license. The Additional Use Grant permits production use for personal, educational, academic, scientific research, experimentation, evaluation, and other non-commercial purposes. See LICENSE for the exact terms. The license changes to GPL-2.0-or-later on 2030-11-23, or the fourth anniversary of this version’s first public distribution, whichever comes first.
 
 ## What it contains
 
