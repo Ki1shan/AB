@@ -1,0 +1,216 @@
+Phase 9 consolidated evaluation -- 2026-11-21T18:47:37.348401+00:00 (mode: full, seed: 0)
+
+VERDICT: EVALUATION FAILED -- one or more suites failed; see failure_analysis and the per-suite sections
+Suites: 16 passed, 3 failed (of 19), 39.343s total
+Environment: Python 3.12.3, tesseract tesseract 5.3.4, persistence v6, 45784 python lines in 127 files; unit tests: cited from harness record (mode: full) (ran 846)
+
+[discriminating] 4 passed, 0 failed, 0 skipped (0.029s, mode full)
+  deduction_3hop/full: PASS -- derived velkra located_in kelmor with 3-step proof at confidence 0.9025
+  contradiction/full: PASS -- both values disputed, contradiction event seen, research goal created, ask returns ['100c', '90c']
+  hypothesis_abduction/full: PASS -- surprise seen (1 event(s)); hypothesis generated with test; outcome recorded; goal done
+  variant_separation: PASS -- at least one task has differing outcomes across variants
+[reasoning_tasks2] 5 passed, 0 failed, 0 skipped (0.066s, mode full)
+  causal_reasoning/full: PASS -- forge with catalyst claimed ((3, 3)) after 3 runs; forge without catalyst (0, 1) not claimed; pooled claim absent
+  analogy/full: PASS -- analogy hypothesis norbex opens garnik at confidence 0.4 (source analogy); ask still unknown: True
+  abstraction/full: PASS -- pending category proposed for ('trellin', 'vossar') with 3 shared properties
+  counterfactual_reasoning/full: PASS -- counterfactual: if door_open=True, the direct route succeeds (was failing); difference {'at': ('drelm', 'forvik'), 'door_open': (False, True), 'has_garnik': (False, True)}
+  variant_separation: PASS -- at least one task has differing outcomes across variants
+[transfer] 1 passed, 3 failed, 0 skipped (0.575s, mode full)
+  transfer_handbuilt: PASS -- continued B failed 1 vs fresh B 2
+  transfer_generated_envgen/treasure: FAIL -- family=treasure seeds=0/1; continued B failed 0 in 8 cycles vs fresh B failed 0 in 8 cycles; A completed=True
+    cause: transfer: continued brain did not beat the fresh brain on the generated treasure environment (no transfer signal: fresh already solves it with 0 failures)
+  transfer_generated_envgen/workshop: FAIL -- family=workshop seeds=0/1; continued B failed 7 in 24 cycles vs fresh B failed 1 in 14 cycles; A completed=True
+    cause: transfer: continued brain did not beat the fresh brain on the generated workshop environment (NEGATIVE transfer: continued did worse than fresh, 7 vs 1 failed attempts)
+  transfer_generated_envgen/surprise: FAIL -- family=surprise seeds=0/1; continued B failed 1 in 7 cycles vs fresh B failed 1 in 7 cycles; A completed=True
+    cause: transfer: continued brain did not beat the fresh brain on the generated surprise environment
+[world_tasks] 6 passed, 0 failed, 0 skipped (0.278s, mode full)
+  transfer_task/full: PASS -- transfer PASS: fresh A 2 failures/14 cycles, fresh B 2/14, continued B 1/12
+  object_tracking/full: PASS -- lantern: goal done in 8 cycles; take->garden->study order ok; unobserved gap survived; identity preserved (world-model path: True)
+  prediction_revision/full: PASS -- prediction revision: 2 revision event(s) (revision); old value retained via world_model.revisions; next plan ['warm_coil', 'heat_vapour'] revised
+  partial_observability/full: PASS -- partial observability: goal done in 14 cycles; door unobserved at start: True; first plan ['go_green_from_blue', 'chant', 'go_red', 'take_relic'] assumes nothing about the door
+  unknown_vs_false/full: PASS -- unknown vs false: unknown ask known=False (I don't know is_a of quorble: nothing stored.); false ask known=True, values ['40c', '50c'], statuses ['disputed']
+  variant_separation: PASS -- at least one task has differing outcomes across variants
+[learning] 6 passed, 0 failed, 0 skipped (9.028s, mode full)
+  variants/full_success: PASS -- full variant success 10/10 (transfer 9/10)
+  sub/acceptance: PASS -- 
+  sub/two_family_transfer: PASS -- At least two distinct pattern families transfer to held-out world D.
+  sub/procedural: PASS -- Second run of the same task type strictly fewer cycles and/or failed attempts than the first (same brain, learning on), and the improvement disappears with learning off. Renamed form isolates durable 
+  sub/calibration: PASS -- ECE after learning strictly lower than ECE with the 1.0 default, on the same prediction stream; met-rate trend across runs.
+  sub/success_withheld: PASS -- Success-driven improvement on held-out D vanishes when success episodes are withheld.
+[learning_curves] 5 passed, 0 failed, 0 skipped (2.236s, mode full)
+  level_0: PASS -- prior tasks 0; success 3/3 (rate 1.0); cycles mean 15.0 (std 0.0); failed mean 2.0 (std 0.0)
+  level_1: PASS -- prior tasks 1; success 3/3 (rate 1.0); cycles mean 13.0 (std 0.0); failed mean 1.0 (std 0.0)
+  level_2: PASS -- prior tasks 2; success 3/3 (rate 1.0); cycles mean 13.0 (std 0.0); failed mean 1.0 (std 0.0)
+  level_4: PASS -- prior tasks 4; success 3/3 (rate 1.0); cycles mean 13.0 (std 0.0); failed mean 1.0 (std 0.0)
+  level_8: PASS -- prior tasks 7; success 3/3 (rate 1.0); cycles mean 13.0 (std 0.0); failed mean 1.0 (std 0.0)
+[execution] 13 passed, 1 failed, 0 skipped (21.873s, mode full)
+  multi_tool_task: PASS -- 
+  failing_tool_recovery: PASS -- 
+  budget_exceeding_tool: PASS -- 
+  cancellation: PASS -- 
+  permission_denial: PASS -- 
+  recovery_alternative: PASS -- 
+  save_restart_resume: PASS -- 
+  bypass_attempts: PASS -- 
+  hierarchical_planning: PASS -- 
+  dependency_blocking: PASS -- 
+  resource_budgets: PASS -- 
+  provenance: PASS -- 
+  carried/wrong_promoted_pattern_retirement: FAIL -- carried-item status: NOT FIRED
+    cause: pattern retirement: the workshop worlds generate only 1 contradicting observation and the brain's threshold is 3 -- see the dedicated retirement world below, where it FIRES (Phase 9 SS4.2)
+  retirement/contradicting_evidence_world: PASS -- P-D pattern promoted in world X, contradicted 3x in world Y, retired: 1 pattern_retired event(s), multiplier 6.0 -> 1.0
+[phase8] 13 passed, 0 failed, 0 skipped (0.873s, mode full)
+  imagine_routes: PASS -- 
+  predict_consequences: PASS -- 
+  compare_routes: PASS -- 
+  select_and_execute: PASS -- 
+  imagined_vs_actual: PASS -- 
+  revision_second_task: PASS -- 
+  what_if_query: PASS -- 
+  counterfactual_world_model: PASS -- 
+  document_perception: PASS -- 
+  image_percept: PASS -- 
+  specialist_absent: PASS -- 
+  pd_overgeneralisation_probe: PASS -- 
+  simulation_does_not_mutate: PASS -- 
+[long_horizon] 1 passed, 0 failed, 0 skipped (0.122s, mode full)
+  long_horizon: PASS -- long-horizon chain: goal done, stages in order=True, interrupted=True, cycles=26
+[perception] 3 passed, 0 failed, 0 skipped (0.001s, mode full)
+  document_perception: PASS -- 
+  image_percept: PASS -- 
+  noisy_ocr: PASS -- exact reads 20/30 (rate 0.6667); mean confidence 0.759
+[memory] 3 passed, 0 failed, 0 skipped (0.0s, mode full)
+  retention_after_restart: PASS -- loaded brain still transfers to D better than fresh D; patterns, episodes, concepts and calibration survive save/load
+  retrieval: PASS -- retrieval precision improves with more training (late > early)
+  consolidation_bounded_memory: PASS -- prioritized pruning retains 0.6667 of pattern-evidence episodes at cap 100 vs tail pruning 0.0; transfer after pruning True
+[tool_use] 4 passed, 0 failed, 0 skipped (0.0s, mode full)
+  budget_exceeding_tool: PASS -- 
+  permission_denial: PASS -- 
+  provenance: PASS -- 
+  rlimit_cpu_burner: PASS -- exitcode -9 (SIGKILL); sandbox does not label the cause — attributed to the kernel's RLIMIT_CPU enforcement by elimination (no parent kill, no wall-time timeout; tool still burning CPU)
+[planning] 8 passed, 0 failed, 0 skipped (0.0s, mode full)
+  discriminating/deduction_3hop: PASS -- full variant: derived velkra located_in kelmor with 3-step proof at confidence 0.9025
+  discriminating/contradiction: PASS -- full variant: both values disputed, contradiction event seen, research goal created, ask returns ['100c', '90c']
+  discriminating/hypothesis_abduction: PASS -- full variant: surprise seen (1 event(s)); hypothesis generated with test; outcome recorded; goal done
+  world_tasks/transfer_task: PASS -- full variant: transfer PASS: fresh A 2 failures/14 cycles, fresh B 2/14, continued B 1/12
+  world_tasks/object_tracking: PASS -- full variant: lantern: goal done in 8 cycles; take->garden->study order ok; unobserved gap survived; identity preserved (world-model path: True)
+  world_tasks/prediction_revision: PASS -- full variant: prediction revision: 2 revision event(s) (revision); old value retained via world_model.revisions; next plan ['warm_coil', 'heat_vapour'] revised
+  world_tasks/partial_observability: PASS -- full variant: partial observability: goal done in 14 cycles; door unobserved at start: True; first plan ['go_green_from_blue', 'chant', 'go_red', 'take_relic'] assumes nothing about the door
+  world_tasks/unknown_vs_false: PASS -- full variant: unknown vs false: unknown ask known=False (I don't know is_a of quorble: nothing stored.); false ask known=True, values ['40c', '50c'], statuses ['disputed']
+[calibration] 3 passed, 0 failed, 0 skipped (0.017s, mode full)
+  stream/learning: PASS -- n=26; ECE default-1.0 0.2692 vs calibrated 0.141 (improved=True); Brier 0.2692 vs 0.1325 (improved=True)
+  stream/workshop: PASS -- n=36; ECE default-1.0 0.2222 vs calibrated 0.1431 (improved=True); Brier 0.2222 vs 0.1435 (improved=True)
+  stream/imagination: PASS -- n=6; ECE default-1.0 0.1667 vs calibrated 0.1667 (improved=False); Brier 0.1667 vs 0.1667 (improved=False)
+[ablations] 16 passed, 0 failed, 0 skipped (0.134s, mode full)
+  no_revision/discriminating/deduction_3hop: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/discriminating/contradiction: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/discriminating/hypothesis_abduction: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/reasoning_tasks2/causal_reasoning: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/reasoning_tasks2/analogy: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/reasoning_tasks2/abstraction: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/reasoning_tasks2/counterfactual_reasoning: PASS -- no_revision task PASSED (full PASSED; same outcome as full)
+  no_revision/separation: PASS -- no_revision differed from full on 0/7 task(s); the removed mechanism is not load-bearing on these tasks
+  no_causal/discriminating/deduction_3hop: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/discriminating/contradiction: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/discriminating/hypothesis_abduction: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/reasoning_tasks2/causal_reasoning: PASS -- no_causal task FAILED (full PASSED; outcome DIFFERED from full)
+  no_causal/reasoning_tasks2/analogy: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/reasoning_tasks2/abstraction: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/reasoning_tasks2/counterfactual_reasoning: PASS -- no_causal task PASSED (full PASSED; same outcome as full)
+  no_causal/separation: PASS -- no_causal differed from full on 1/7 task(s); the removed mechanism is load-bearing on at least one task
+[benchmarks] 9 passed, 1 failed, 0 skipped (2.874s, mode full)
+  navigate_unfamiliar/full: PASS -- navigate: discovered ['quendal', 'sorvik', 'brelm', 'tarnel', 'vessik'], treasure done, plan violations=[]
+  find_and_use_resources/full: PASS -- resources: goal done, wax attempts 1, charges left 0
+  changing_objective/full: PASS -- changing_objective: goal B done after change at cycle 5; stale steps 0, key re-taken 0x
+  unexpected_event/full: PASS -- unexpected_event: goal done, model_revised=1, world_changed=1
+  planning_under_uncertainty/full: PASS -- uncertainty: goal done, first plan ['go_brelm_from_quendal', 'take_vaskel', 'unlock', 'go_sorvik_from_brelm', 'take_durnik'] (true expected 1.0 vs alternative 0.6), cross attempts 0 (0 failed)
+  transfer_complex/full: FAIL -- transfer_complex FAILED: continued B 3 failed / 23 cycles vs fresh B 2 failed / 17 cycles; A completed=True
+    cause: unknown -- needs investigation
+  long_task_interrupt_restart/full: PASS -- long_task: goal done, stages in order, each once, save at cycle 12, resumed to cycle 25
+  unrecoverable_failure/full: PASS -- unrecoverable: stop stalled after 10 cycles, key destroyed at log index 2, attempts after event 2
+  competing_goals/full: PASS -- competing_goals: zarnik done, phelik suspended, decision chose assemble the zarnik
+  variant_separation: PASS -- at least one task has differing outcomes across variants
+[failure_analysis] 1 passed, 0 failed, 0 skipped (0.0s, mode full)
+  failure_analysis_complete: PASS -- 5 failure(s) across the programme; top mode: transfer (3)
+[regression] 1 passed, 0 failed, 0 skipped (0.037s, mode full)
+  regression_record: PASS -- 6 phase rows (3, 5, 6, 7, 8, 9); Phase 8 row present
+[leakage_audit] 53 passed, 0 failed, 0 skipped (1.11s, mode full)
+  name/velkra: PASS -- no occurrences in ab/ outside ab/eval/
+  name/torvin: PASS -- no occurrences in ab/ outside ab/eval/
+  name/sarnak: PASS -- no occurrences in ab/ outside ab/eval/
+  name/kelmor: PASS -- no occurrences in ab/ outside ab/eval/
+  name/lyssan: PASS -- no occurrences in ab/ outside ab/eval/
+  name/zorblat: PASS -- no occurrences in ab/ outside ab/eval/
+  name/quivern: PASS -- no occurrences in ab/ outside ab/eval/
+  name/tessera: PASS -- no occurrences in ab/ outside ab/eval/
+  name/forvik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/garnik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/krelm: PASS -- no occurrences in ab/ outside ab/eval/
+  name/mellor: PASS -- no occurrences in ab/ outside ab/eval/
+  name/norbex: PASS -- no occurrences in ab/ outside ab/eval/
+  name/trellin: PASS -- no occurrences in ab/ outside ab/eval/
+  name/vortan: PASS -- no occurrences in ab/ outside ab/eval/
+  name/vossar: PASS -- no occurrences in ab/ outside ab/eval/
+  name/brellik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/brelm: PASS -- no occurrences in ab/ outside ab/eval/
+  name/clack: PASS -- no occurrences in ab/ outside ab/eval/
+  name/dralik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/drelk: PASS -- no occurrences in ab/ outside ab/eval/
+  name/durnik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/frelk: PASS -- no occurrences in ab/ outside ab/eval/
+  name/keepsake: PASS -- no occurrences in ab/ outside ab/eval/
+  name/kendrell: PASS -- no occurrences in ab/ outside ab/eval/
+  name/kindled: PASS -- no occurrences in ab/ outside ab/eval/
+  name/mordak: PASS -- no occurrences in ab/ outside ab/eval/
+  name/mordune: PASS -- no occurrences in ab/ outside ab/eval/
+  name/nolvak: PASS -- no occurrences in ab/ outside ab/eval/
+  name/nolvar: PASS -- no occurrences in ab/ outside ab/eval/
+  name/nolvik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/phelik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/quenched: PASS -- no occurrences in ab/ outside ab/eval/
+  name/quendal: PASS -- no occurrences in ab/ outside ab/eval/
+  name/quilm: PASS -- no occurrences in ab/ outside ab/eval/
+  name/sarnik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/senvor: PASS -- no occurrences in ab/ outside ab/eval/
+  name/sorvane: PASS -- no occurrences in ab/ outside ab/eval/
+  name/sorvik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/tarnel: PASS -- no occurrences in ab/ outside ab/eval/
+  name/tarnik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/thrum: PASS -- no occurrences in ab/ outside ab/eval/
+  name/toll: PASS -- no occurrences in ab/ outside ab/eval/
+  name/tremik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/ullik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/ullin: PASS -- no occurrences in ab/ outside ab/eval/
+  name/vaskel: PASS -- no occurrences in ab/ outside ab/eval/
+  name/vessal: PASS -- no occurrences in ab/ outside ab/eval/
+  name/vessik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/zarnik: PASS -- no occurrences in ab/ outside ab/eval/
+  name/zavrel: PASS -- no occurrences in ab/ outside ab/eval/
+  name/zavrik: PASS -- no occurrences in ab/ outside ab/eval/
+  mechanism_construction_audit: PASS -- per-mechanism held-out statements recorded
+
+Calibration (per stream -- never averaged):
+  learning: n=26; ECE 0.2692 -> 0.141 (improved=True); Brier 0.2692 -> 0.1325 (improved=True)
+  workshop: n=36; ECE 0.2222 -> 0.1431 (improved=True); Brier 0.2222 -> 0.1435 (improved=True)
+  imagination: n=6; ECE 0.1667 -> 0.1667 (improved=False); Brier 0.1667 -> 0.1667 (improved=False)
+  Stream-dependence preserved: calibration helps where the stream is unreliable and can hurt where the stream is deterministic-reliable; see the per-stream improved flags above.
+
+Failure analysis (top modes by count):
+  transfer: 3
+  pattern retirement: 1
+  unknown -- needs investigation: 1
+
+Leakage audit: 0 leak(s) across 52 names checked (ab/ outside ab/eval/)
+
+Ablations (no_revision / no_causal vs full):
+  discriminating/deduction_3hop: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+  discriminating/contradiction: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+  discriminating/hypothesis_abduction: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+  reasoning_tasks2/causal_reasoning: full=PASS, no_revision=PASS (same), no_causal=FAIL (differed)
+  reasoning_tasks2/analogy: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+  reasoning_tasks2/abstraction: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+  reasoning_tasks2/counterfactual_reasoning: full=PASS, no_revision=PASS (same), no_causal=PASS (same)
+
+EVALUATION FAILED -- this is a failed evaluation, not a successful report-writing process. See failure_analysis above and the per-suite FAIL lines.
+
+Full record: docs/phase9-eval-record.json; regression record: docs/phase9-regression-record.json

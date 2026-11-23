@@ -1,0 +1,1138 @@
+{
+ "method": "Render each sentence with PIL (DejaVuSans 44pt, 1100x120 white) then degrade: clean | GaussianBlur radius 2/3/5/8 | downscale to 25% with LANCZOS and back. One real tesseract invocation per sample via TesseractOcr.read_words; admitted/uncertain split by ab.body.ocr.words_above_threshold at 0.6, the same function OcrSensor.gate applies. exact_read compares the whitespace-normalised full read to the sentence; gate_exact_read compares the admitted-words text. Degradation is a result, not a failure to hide.",
+ "n_samples": 30,
+ "exact_reads": 20,
+ "gate_exact_reads": 20,
+ "mean_confidence": 0.759,
+ "mean_confidence_by_degradation": {
+  "clean": {
+   "n": 5,
+   "exact_reads": 5,
+   "mean_confidence": 0.963
+  },
+  "blur2": {
+   "n": 5,
+   "exact_reads": 5,
+   "mean_confidence": 0.962
+  },
+  "blur3": {
+   "n": 5,
+   "exact_reads": 5,
+   "mean_confidence": 0.959
+  },
+  "blur5": {
+   "n": 5,
+   "exact_reads": 0,
+   "mean_confidence": 0.612
+  },
+  "blur8": {
+   "n": 5,
+   "exact_reads": 0,
+   "mean_confidence": 0.097
+  },
+  "downscale25": {
+   "n": 5,
+   "exact_reads": 5,
+   "mean_confidence": 0.963
+  }
+ },
+ "tesseract": "tesseract 5.3.4",
+ "pillow": "10.2.0",
+ "python": "3.12.3",
+ "font": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf size 44",
+ "gate_threshold": 0.6,
+ "per_sample": [
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "clean",
+   "text": "Mars is a planet.",
+   "confidence": 0.964,
+   "exact_read": true,
+   "admitted_text": "Mars is a planet.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Mars",
+     "confidence": 0.965
+    },
+    {
+     "text": "is",
+     "confidence": 0.958
+    },
+    {
+     "text": "a",
+     "confidence": 0.969
+    },
+    {
+     "text": "planet.",
+     "confidence": 0.965
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "blur2",
+   "text": "Mars is a planet.",
+   "confidence": 0.956,
+   "exact_read": true,
+   "admitted_text": "Mars is a planet.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Mars",
+     "confidence": 0.969
+    },
+    {
+     "text": "is",
+     "confidence": 0.96
+    },
+    {
+     "text": "a",
+     "confidence": 0.946
+    },
+    {
+     "text": "planet.",
+     "confidence": 0.948
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "blur3",
+   "text": "Mars is a planet.",
+   "confidence": 0.949,
+   "exact_read": true,
+   "admitted_text": "Mars is a planet.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Mars",
+     "confidence": 0.968
+    },
+    {
+     "text": "is",
+     "confidence": 0.955
+    },
+    {
+     "text": "a",
+     "confidence": 0.966
+    },
+    {
+     "text": "planet.",
+     "confidence": 0.908
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "blur5",
+   "text": "Manto 4 planet",
+   "confidence": 0.466,
+   "exact_read": false,
+   "admitted_text": "planet",
+   "gate_exact_read": false,
+   "admitted_words": [
+    {
+     "text": "planet",
+     "confidence": 0.741
+    }
+   ],
+   "uncertain_words": [
+    {
+     "text": "Manto",
+     "confidence": 0.389
+    },
+    {
+     "text": "4",
+     "confidence": 0.267
+    }
+   ],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "blur8",
+   "text": "",
+   "confidence": 0.0,
+   "exact_read": false,
+   "admitted_text": "",
+   "gate_exact_read": false,
+   "admitted_words": [],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Mars is a planet.",
+   "degradation": "downscale25",
+   "text": "Mars is a planet.",
+   "confidence": 0.96,
+   "exact_read": true,
+   "admitted_text": "Mars is a planet.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Mars",
+     "confidence": 0.967
+    },
+    {
+     "text": "is",
+     "confidence": 0.954
+    },
+    {
+     "text": "a",
+     "confidence": 0.954
+    },
+    {
+     "text": "planet.",
+     "confidence": 0.964
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "clean",
+   "text": "Paris is the capital of France.",
+   "confidence": 0.965,
+   "exact_read": true,
+   "admitted_text": "Paris is the capital of France.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Paris",
+     "confidence": 0.958
+    },
+    {
+     "text": "is",
+     "confidence": 0.967
+    },
+    {
+     "text": "the",
+     "confidence": 0.964
+    },
+    {
+     "text": "capital",
+     "confidence": 0.967
+    },
+    {
+     "text": "of",
+     "confidence": 0.967
+    },
+    {
+     "text": "France.",
+     "confidence": 0.965
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "blur2",
+   "text": "Paris is the capital of France.",
+   "confidence": 0.964,
+   "exact_read": true,
+   "admitted_text": "Paris is the capital of France.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Paris",
+     "confidence": 0.966
+    },
+    {
+     "text": "is",
+     "confidence": 0.961
+    },
+    {
+     "text": "the",
+     "confidence": 0.961
+    },
+    {
+     "text": "capital",
+     "confidence": 0.964
+    },
+    {
+     "text": "of",
+     "confidence": 0.97
+    },
+    {
+     "text": "France.",
+     "confidence": 0.963
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "blur3",
+   "text": "Paris is the capital of France.",
+   "confidence": 0.962,
+   "exact_read": true,
+   "admitted_text": "Paris is the capital of France.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Paris",
+     "confidence": 0.96
+    },
+    {
+     "text": "is",
+     "confidence": 0.959
+    },
+    {
+     "text": "the",
+     "confidence": 0.961
+    },
+    {
+     "text": "capital",
+     "confidence": 0.961
+    },
+    {
+     "text": "of",
+     "confidence": 0.969
+    },
+    {
+     "text": "France.",
+     "confidence": 0.961
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "blur5",
+   "text": "Pers = the capital of france",
+   "confidence": 0.67,
+   "exact_read": false,
+   "admitted_text": "Pers the of france",
+   "gate_exact_read": false,
+   "admitted_words": [
+    {
+     "text": "Pers",
+     "confidence": 0.647
+    },
+    {
+     "text": "the",
+     "confidence": 0.916
+    },
+    {
+     "text": "of",
+     "confidence": 0.963
+    },
+    {
+     "text": "france",
+     "confidence": 0.9
+    }
+   ],
+   "uncertain_words": [
+    {
+     "text": "=",
+     "confidence": 0.342
+    },
+    {
+     "text": "capital",
+     "confidence": 0.254
+    }
+   ],
+   "misread_admitted": [
+    "Pers"
+   ]
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "blur8",
+   "text": "mate em ewe",
+   "confidence": 0.222,
+   "exact_read": false,
+   "admitted_text": "",
+   "gate_exact_read": false,
+   "admitted_words": [],
+   "uncertain_words": [
+    {
+     "text": "mate",
+     "confidence": 0.0
+    },
+    {
+     "text": "em",
+     "confidence": 0.182
+    },
+    {
+     "text": "ewe",
+     "confidence": 0.483
+    }
+   ],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Paris is the capital of France.",
+   "degradation": "downscale25",
+   "text": "Paris is the capital of France.",
+   "confidence": 0.965,
+   "exact_read": true,
+   "admitted_text": "Paris is the capital of France.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Paris",
+     "confidence": 0.958
+    },
+    {
+     "text": "is",
+     "confidence": 0.965
+    },
+    {
+     "text": "the",
+     "confidence": 0.968
+    },
+    {
+     "text": "capital",
+     "confidence": 0.961
+    },
+    {
+     "text": "of",
+     "confidence": 0.97
+    },
+    {
+     "text": "France.",
+     "confidence": 0.967
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "clean",
+   "text": "The quick brown fox jumps over the lazy dog.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "The quick brown fox jumps over the lazy dog.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.957
+    },
+    {
+     "text": "quick",
+     "confidence": 0.969
+    },
+    {
+     "text": "brown",
+     "confidence": 0.961
+    },
+    {
+     "text": "fox",
+     "confidence": 0.961
+    },
+    {
+     "text": "jumps",
+     "confidence": 0.967
+    },
+    {
+     "text": "over",
+     "confidence": 0.965
+    },
+    {
+     "text": "the",
+     "confidence": 0.962
+    },
+    {
+     "text": "lazy",
+     "confidence": 0.962
+    },
+    {
+     "text": "dog.",
+     "confidence": 0.968
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "blur2",
+   "text": "The quick brown fox jumps over the lazy dog.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "The quick brown fox jumps over the lazy dog.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.967
+    },
+    {
+     "text": "quick",
+     "confidence": 0.962
+    },
+    {
+     "text": "brown",
+     "confidence": 0.967
+    },
+    {
+     "text": "fox",
+     "confidence": 0.961
+    },
+    {
+     "text": "jumps",
+     "confidence": 0.956
+    },
+    {
+     "text": "over",
+     "confidence": 0.964
+    },
+    {
+     "text": "the",
+     "confidence": 0.956
+    },
+    {
+     "text": "lazy",
+     "confidence": 0.963
+    },
+    {
+     "text": "dog.",
+     "confidence": 0.969
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "blur3",
+   "text": "The quick brown fox jumps over the lazy dog.",
+   "confidence": 0.959,
+   "exact_read": true,
+   "admitted_text": "The quick brown fox jumps over the lazy dog.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.957
+    },
+    {
+     "text": "quick",
+     "confidence": 0.957
+    },
+    {
+     "text": "brown",
+     "confidence": 0.956
+    },
+    {
+     "text": "fox",
+     "confidence": 0.956
+    },
+    {
+     "text": "jumps",
+     "confidence": 0.958
+    },
+    {
+     "text": "over",
+     "confidence": 0.964
+    },
+    {
+     "text": "the",
+     "confidence": 0.966
+    },
+    {
+     "text": "lazy",
+     "confidence": 0.953
+    },
+    {
+     "text": "dog.",
+     "confidence": 0.964
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "blur5",
+   "text": "The qual brown fos pangs over the lary dog",
+   "confidence": 0.751,
+   "exact_read": false,
+   "admitted_text": "The brown fos pangs over the lary dog",
+   "gate_exact_read": false,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.954
+    },
+    {
+     "text": "brown",
+     "confidence": 0.635
+    },
+    {
+     "text": "fos",
+     "confidence": 0.941
+    },
+    {
+     "text": "pangs",
+     "confidence": 0.601
+    },
+    {
+     "text": "over",
+     "confidence": 0.8
+    },
+    {
+     "text": "the",
+     "confidence": 0.956
+    },
+    {
+     "text": "lary",
+     "confidence": 0.873
+    },
+    {
+     "text": "dog",
+     "confidence": 0.906
+    }
+   ],
+   "uncertain_words": [
+    {
+     "text": "qual",
+     "confidence": 0.097
+    }
+   ],
+   "misread_admitted": [
+    "fos",
+    "pangs",
+    "lary"
+   ]
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "blur8",
+   "text": "",
+   "confidence": 0.0,
+   "exact_read": false,
+   "admitted_text": "",
+   "gate_exact_read": false,
+   "admitted_words": [],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The quick brown fox jumps over the lazy dog.",
+   "degradation": "downscale25",
+   "text": "The quick brown fox jumps over the lazy dog.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "The quick brown fox jumps over the lazy dog.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.963
+    },
+    {
+     "text": "quick",
+     "confidence": 0.965
+    },
+    {
+     "text": "brown",
+     "confidence": 0.959
+    },
+    {
+     "text": "fox",
+     "confidence": 0.968
+    },
+    {
+     "text": "jumps",
+     "confidence": 0.96
+    },
+    {
+     "text": "over",
+     "confidence": 0.96
+    },
+    {
+     "text": "the",
+     "confidence": 0.967
+    },
+    {
+     "text": "lazy",
+     "confidence": 0.967
+    },
+    {
+     "text": "dog.",
+     "confidence": 0.954
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "clean",
+   "text": "Water boils at one hundred degrees.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "Water boils at one hundred degrees.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Water",
+     "confidence": 0.962
+    },
+    {
+     "text": "boils",
+     "confidence": 0.963
+    },
+    {
+     "text": "at",
+     "confidence": 0.968
+    },
+    {
+     "text": "one",
+     "confidence": 0.965
+    },
+    {
+     "text": "hundred",
+     "confidence": 0.965
+    },
+    {
+     "text": "degrees.",
+     "confidence": 0.958
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "blur2",
+   "text": "Water boils at one hundred degrees.",
+   "confidence": 0.966,
+   "exact_read": true,
+   "admitted_text": "Water boils at one hundred degrees.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Water",
+     "confidence": 0.965
+    },
+    {
+     "text": "boils",
+     "confidence": 0.964
+    },
+    {
+     "text": "at",
+     "confidence": 0.969
+    },
+    {
+     "text": "one",
+     "confidence": 0.968
+    },
+    {
+     "text": "hundred",
+     "confidence": 0.968
+    },
+    {
+     "text": "degrees.",
+     "confidence": 0.965
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "blur3",
+   "text": "Water boils at one hundred degrees.",
+   "confidence": 0.964,
+   "exact_read": true,
+   "admitted_text": "Water boils at one hundred degrees.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Water",
+     "confidence": 0.961
+    },
+    {
+     "text": "boils",
+     "confidence": 0.961
+    },
+    {
+     "text": "at",
+     "confidence": 0.961
+    },
+    {
+     "text": "one",
+     "confidence": 0.969
+    },
+    {
+     "text": "hundred",
+     "confidence": 0.965
+    },
+    {
+     "text": "degrees.",
+     "confidence": 0.965
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "blur5",
+   "text": "Wate: tenn af one Mued degees",
+   "confidence": 0.505,
+   "exact_read": false,
+   "admitted_text": "af one",
+   "gate_exact_read": false,
+   "admitted_words": [
+    {
+     "text": "af",
+     "confidence": 0.831
+    },
+    {
+     "text": "one",
+     "confidence": 0.891
+    }
+   ],
+   "uncertain_words": [
+    {
+     "text": "Wate:",
+     "confidence": 0.512
+    },
+    {
+     "text": "tenn",
+     "confidence": 0.488
+    },
+    {
+     "text": "Mued",
+     "confidence": 0.0
+    },
+    {
+     "text": "degees",
+     "confidence": 0.306
+    }
+   ],
+   "misread_admitted": [
+    "af"
+   ]
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "blur8",
+   "text": "ere een 6 ee Oe oe",
+   "confidence": 0.261,
+   "exact_read": false,
+   "admitted_text": "",
+   "gate_exact_read": false,
+   "admitted_words": [],
+   "uncertain_words": [
+    {
+     "text": "ere",
+     "confidence": 0.142
+    },
+    {
+     "text": "een",
+     "confidence": 0.457
+    },
+    {
+     "text": "6",
+     "confidence": 0.256
+    },
+    {
+     "text": "ee",
+     "confidence": 0.024
+    },
+    {
+     "text": "Oe",
+     "confidence": 0.25
+    },
+    {
+     "text": "oe",
+     "confidence": 0.438
+    }
+   ],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "Water boils at one hundred degrees.",
+   "degradation": "downscale25",
+   "text": "Water boils at one hundred degrees.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "Water boils at one hundred degrees.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "Water",
+     "confidence": 0.964
+    },
+    {
+     "text": "boils",
+     "confidence": 0.961
+    },
+    {
+     "text": "at",
+     "confidence": 0.961
+    },
+    {
+     "text": "one",
+     "confidence": 0.966
+    },
+    {
+     "text": "hundred",
+     "confidence": 0.963
+    },
+    {
+     "text": "degrees.",
+     "confidence": 0.963
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "clean",
+   "text": "The library opens at nine in the morning.",
+   "confidence": 0.958,
+   "exact_read": true,
+   "admitted_text": "The library opens at nine in the morning.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.955
+    },
+    {
+     "text": "library",
+     "confidence": 0.955
+    },
+    {
+     "text": "opens",
+     "confidence": 0.962
+    },
+    {
+     "text": "at",
+     "confidence": 0.961
+    },
+    {
+     "text": "nine",
+     "confidence": 0.954
+    },
+    {
+     "text": "in",
+     "confidence": 0.956
+    },
+    {
+     "text": "the",
+     "confidence": 0.967
+    },
+    {
+     "text": "morning.",
+     "confidence": 0.951
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "blur2",
+   "text": "The library opens at nine in the morning.",
+   "confidence": 0.959,
+   "exact_read": true,
+   "admitted_text": "The library opens at nine in the morning.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.959
+    },
+    {
+     "text": "library",
+     "confidence": 0.954
+    },
+    {
+     "text": "opens",
+     "confidence": 0.954
+    },
+    {
+     "text": "at",
+     "confidence": 0.967
+    },
+    {
+     "text": "nine",
+     "confidence": 0.959
+    },
+    {
+     "text": "in",
+     "confidence": 0.953
+    },
+    {
+     "text": "the",
+     "confidence": 0.968
+    },
+    {
+     "text": "morning.",
+     "confidence": 0.959
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "blur3",
+   "text": "The library opens at nine in the morning.",
+   "confidence": 0.963,
+   "exact_read": true,
+   "admitted_text": "The library opens at nine in the morning.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.969
+    },
+    {
+     "text": "library",
+     "confidence": 0.953
+    },
+    {
+     "text": "opens",
+     "confidence": 0.965
+    },
+    {
+     "text": "at",
+     "confidence": 0.965
+    },
+    {
+     "text": "nine",
+     "confidence": 0.962
+    },
+    {
+     "text": "in",
+     "confidence": 0.965
+    },
+    {
+     "text": "the",
+     "confidence": 0.965
+    },
+    {
+     "text": "morning.",
+     "confidence": 0.958
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "blur5",
+   "text": "The Smrary opens at rene in the morreng",
+   "confidence": 0.669,
+   "exact_read": false,
+   "admitted_text": "The opens at in the",
+   "gate_exact_read": false,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.888
+    },
+    {
+     "text": "opens",
+     "confidence": 0.885
+    },
+    {
+     "text": "at",
+     "confidence": 0.825
+    },
+    {
+     "text": "in",
+     "confidence": 0.875
+    },
+    {
+     "text": "the",
+     "confidence": 0.926
+    }
+   ],
+   "uncertain_words": [
+    {
+     "text": "Smrary",
+     "confidence": 0.0
+    },
+    {
+     "text": "rene",
+     "confidence": 0.455
+    },
+    {
+     "text": "morreng",
+     "confidence": 0.5
+    }
+   ],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "blur8",
+   "text": "",
+   "confidence": 0.0,
+   "exact_read": false,
+   "admitted_text": "",
+   "gate_exact_read": false,
+   "admitted_words": [],
+   "uncertain_words": [],
+   "misread_admitted": []
+  },
+  {
+   "sentence": "The library opens at nine in the morning.",
+   "degradation": "downscale25",
+   "text": "The library opens at nine in the morning.",
+   "confidence": 0.962,
+   "exact_read": true,
+   "admitted_text": "The library opens at nine in the morning.",
+   "gate_exact_read": true,
+   "admitted_words": [
+    {
+     "text": "The",
+     "confidence": 0.964
+    },
+    {
+     "text": "library",
+     "confidence": 0.966
+    },
+    {
+     "text": "opens",
+     "confidence": 0.957
+    },
+    {
+     "text": "at",
+     "confidence": 0.968
+    },
+    {
+     "text": "nine",
+     "confidence": 0.965
+    },
+    {
+     "text": "in",
+     "confidence": 0.961
+    },
+    {
+     "text": "the",
+     "confidence": 0.961
+    },
+    {
+     "text": "morning.",
+     "confidence": 0.959
+    }
+   ],
+   "uncertain_words": [],
+   "misread_admitted": []
+  }
+ ]
+}

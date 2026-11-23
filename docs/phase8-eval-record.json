@@ -1,0 +1,861 @@
+{
+ "evaluation": "ab.eval.phase8_eval (Phase 8)",
+ "timestamp": "2026-11-21T18:39:09.040895+00:00",
+ "mode": "full",
+ "experiments": {
+  "imagine_routes": {
+   "criterion": ">= 2 distinct routes imagined from one goal, each with a distinct predicted future state, each meeting the goal, all labelled simulated",
+   "passed": true,
+   "api": "Brain.imagine",
+   "n_routes": 2,
+   "n_distinct_routes": 2,
+   "n_distinct_predicted_states": 2,
+   "scenarios": [
+    {
+     "name": "route-1",
+     "route": [
+      "go_lab_from_hall",
+      "pick_lock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "steps": [
+      {
+       "action": "go_lab_from_hall",
+       "confidence": 1.0,
+       "effects": {
+        "at": "lab"
+       },
+       "state": {
+        "at": "lab",
+        "has_key": false,
+        "door_open": false,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "pick_lock",
+       "confidence": 1.0,
+       "effects": {
+        "door_open": true
+       },
+       "state": {
+        "at": "lab",
+        "has_key": false,
+        "door_open": true,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "go_vault",
+       "confidence": 1.0,
+       "effects": {
+        "at": "vault"
+       },
+       "state": {
+        "at": "vault",
+        "has_key": false,
+        "door_open": true,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "take_treasure",
+       "confidence": 1.0,
+       "effects": {
+        "has_treasure": true
+       },
+       "state": {
+        "at": "vault",
+        "has_key": false,
+        "door_open": true,
+        "has_treasure": true
+       }
+      }
+     ],
+     "predicted_cost": 4.0,
+     "predicted_success": 1.0,
+     "risk": 0.0,
+     "predicted_state": {
+      "at": "vault",
+      "has_key": false,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "met_goal": true,
+     "assumptions": [
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'go_lab_from_hall': {'at': 'lab'} (confidence 1.00)",
+      "simulated: assumed effect of 'pick_lock': {'door_open': True} (confidence 1.00)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 1.00)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 1.00)"
+     ],
+     "violations": [],
+     "simulated": true
+    },
+    {
+     "name": "route-2",
+     "route": [
+      "go_lab_from_hall",
+      "take_key",
+      "unlock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "steps": [
+      {
+       "action": "go_lab_from_hall",
+       "confidence": 1.0,
+       "effects": {
+        "at": "lab"
+       },
+       "state": {
+        "at": "lab",
+        "has_key": false,
+        "door_open": false,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "take_key",
+       "confidence": 1.0,
+       "effects": {
+        "has_key": true
+       },
+       "state": {
+        "at": "lab",
+        "has_key": true,
+        "door_open": false,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "unlock",
+       "confidence": 1.0,
+       "effects": {
+        "door_open": true
+       },
+       "state": {
+        "at": "lab",
+        "has_key": true,
+        "door_open": true,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "go_vault",
+       "confidence": 1.0,
+       "effects": {
+        "at": "vault"
+       },
+       "state": {
+        "at": "vault",
+        "has_key": true,
+        "door_open": true,
+        "has_treasure": false
+       }
+      },
+      {
+       "action": "take_treasure",
+       "confidence": 1.0,
+       "effects": {
+        "has_treasure": true
+       },
+       "state": {
+        "at": "vault",
+        "has_key": true,
+        "door_open": true,
+        "has_treasure": true
+       }
+      }
+     ],
+     "predicted_cost": 5.0,
+     "predicted_success": 1.0,
+     "risk": 0.0,
+     "predicted_state": {
+      "at": "vault",
+      "has_key": true,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "met_goal": true,
+     "assumptions": [
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'go_lab_from_hall': {'at': 'lab'} (confidence 1.00)",
+      "simulated: assumed effect of 'take_key': {'has_key': True} (confidence 1.00)",
+      "simulated: assumed effect of 'unlock': {'door_open': True} (confidence 1.00)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 1.00)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 1.00)"
+     ],
+     "violations": [],
+     "simulated": true
+    }
+   ],
+   "simulated": true,
+   "dependency": null,
+   "name": "imagine_routes"
+  },
+  "predict_consequences": {
+   "criterion": "every imagined step carries a numeric per-step confidence from the causal model, at least one step's confidence is below 1.0 (evidence-based, not the uncalibrated default), and assumptions are recorded per scenario",
+   "passed": true,
+   "api": "Brain.imagine + Simulator direct simulation of both routes",
+   "imagine_api": "Brain.imagine",
+   "imagine_scenarios_post_learning": 1,
+   "imagine_post_learning_routes": [
+    [
+     "go_lab_from_hall",
+     "take_key",
+     "unlock",
+     "go_vault",
+     "take_treasure"
+    ]
+   ],
+   "seed_run_completed": true,
+   "n_scenarios": 2,
+   "n_steps_total": 9,
+   "all_confidences_numeric": true,
+   "any_confidence_below_1": true,
+   "pick_lock_predicted_confidence": 0.1667,
+   "causal_pick_lock_door_open": [
+    0,
+    1
+   ],
+   "causal_unlock_door_open": [
+    1,
+    1
+   ],
+   "n_assumptions_recorded": 12,
+   "scenarios": [
+    {
+     "route": [
+      "go_lab_from_hall",
+      "pick_lock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "steps": [
+      {
+       "action": "go_lab_from_hall",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "pick_lock",
+       "cost": 18.0,
+       "confidence": 0.1667
+      },
+      {
+       "action": "go_vault",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "take_treasure",
+       "cost": 1.0,
+       "confidence": 0.8333
+      }
+     ],
+     "predicted_cost": 111.6,
+     "predicted_success": 0.0965,
+     "risk": 0.9035,
+     "predicted_state": {
+      "at": "vault",
+      "has_key": false,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "met_goal": true,
+     "assumptions": [
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'go_lab_from_hall': {'at': 'lab'} (confidence 0.83)",
+      "simulated: assumed effect of 'pick_lock': {'door_open': True} (confidence 0.17)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 0.83)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 0.83)"
+     ],
+     "unknown_effect_steps": [],
+     "simulator": "ab.imagination.Simulator"
+    },
+    {
+     "route": [
+      "go_lab_from_hall",
+      "take_key",
+      "unlock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "steps": [
+      {
+       "action": "go_lab_from_hall",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "take_key",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "unlock",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "go_vault",
+       "cost": 1.0,
+       "confidence": 0.8333
+      },
+      {
+       "action": "take_treasure",
+       "cost": 1.0,
+       "confidence": 0.8333
+      }
+     ],
+     "predicted_cost": 6.0,
+     "predicted_success": 0.4019,
+     "risk": 0.5981,
+     "predicted_state": {
+      "at": "vault",
+      "has_key": true,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "met_goal": true,
+     "assumptions": [
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'go_lab_from_hall': {'at': 'lab'} (confidence 0.83)",
+      "simulated: step 'take_key' would violate world-model constraint 'containment'",
+      "simulated: assumed effect of 'take_key': {'has_key': True} (confidence 0.83)",
+      "simulated: assumed effect of 'unlock': {'door_open': True} (confidence 0.83)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 0.83)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 0.83)"
+     ],
+     "unknown_effect_steps": [],
+     "simulator": "ab.imagination.Simulator"
+    }
+   ],
+   "dependency": null,
+   "note": "Post-learning, imagine() returns 1 scenario (the key route): the learned pick_lock pair ban prunes the other candidate. Both routes are simulated directly through the same Simulator here, so the per-step confidences of the dropped route are still measured (pick_lock 0.1667, revision-adjusted toward the observed 0.0).",
+   "name": "predict_consequences"
+  },
+  "compare_routes": {
+   "criterion": ">= 2 scenarios ranked by predicted success, then cost, then risk, with a recorded reason per scenario; the key route ranks first after the pick_lock failure is learned",
+   "passed": true,
+   "api": "Simulator direct simulation of both routes + _rank_scenarios",
+   "imagine_api": "Brain.imagine",
+   "imagine_ranking_post_learning": [
+    {
+     "rank": 1,
+     "route": [
+      "go_lab_from_hall",
+      "take_key",
+      "unlock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "predicted_success": 0.4019,
+     "predicted_cost": 6.0,
+     "risk": 0.5981,
+     "reason": "rank 1: highest predicted success 0.40; predicted cost 6.00, risk 0.60"
+    }
+   ],
+   "seed_run_completed": true,
+   "n_scenarios": 2,
+   "ranking": [
+    {
+     "rank": 1,
+     "route": [
+      "go_lab_from_hall",
+      "take_key",
+      "unlock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "predicted_success": 0.4019,
+     "predicted_cost": 6.0,
+     "risk": 0.5981,
+     "reason": "predicted success 0.4019 (highest first), then predicted cost 6.0 (lowest first), then risk 0.5981; route ['go_lab_from_hall', 'take_key', 'unlock', 'go_vault', 'take_treasure']"
+    },
+    {
+     "rank": 2,
+     "route": [
+      "go_lab_from_hall",
+      "pick_lock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "predicted_success": 0.0965,
+     "predicted_cost": 111.6,
+     "risk": 0.9035,
+     "reason": "predicted success 0.0965 (highest first), then predicted cost 111.6 (lowest first), then risk 0.9035; route ['go_lab_from_hall', 'pick_lock', 'go_vault', 'take_treasure']"
+    }
+   ],
+   "top_route": [
+    "go_lab_from_hall",
+    "take_key",
+    "unlock",
+    "go_vault",
+    "take_treasure"
+   ],
+   "dependency": null,
+   "name": "compare_routes"
+  },
+  "select_and_execute": {
+   "criterion": "best-simulated route selected with a recorded reason, then executed for real; the goal completes",
+   "passed": true,
+   "api": "Brain.imagine",
+   "selected_route": [
+    "go_lab_from_hall",
+    "pick_lock",
+    "go_vault",
+    "take_treasure"
+   ],
+   "selection_reason": "rank 1: highest predicted success 1.00; predicted cost 4.00, risk 0.00",
+   "selected_predicted_success": 1.0,
+   "selected_predicted_cost": 4.0,
+   "executed_completed": true,
+   "executed_cycles": 10,
+   "pick_lock_attempts_during_execution": 1,
+   "simulation_ranking_used_in_execution": true,
+   "note": "The selected pick_lock route failed at pick_lock in reality (prediction error recorded below); the brain replanned and completed via the key route. Selection was best-simulated at selection time (success tie 1.0 vs 1.0, cost 4.0 vs 5.0); the failure is the imagination gap experiment 5 measures, not a selection error.",
+   "prediction_errors_after_execution": [
+    {
+     "action": "pick_lock",
+     "effect": "door_open",
+     "expected": true,
+     "actual": false,
+     "cycle": 5,
+     "error": 1
+    }
+   ],
+   "dependency": null,
+   "name": "select_and_execute"
+  },
+  "imagined_vs_actual": {
+   "criterion": "imagined outcome compared against reality after execution; at least one prediction_checked event and a recorded prediction error for pick_lock/door_open (expected True, actual False); the imagined post-pick_lock state said door_open True",
+   "passed": true,
+   "api": "Brain.imagine",
+   "best_route": [
+    "go_lab_from_hall",
+    "pick_lock",
+    "go_vault",
+    "take_treasure"
+   ],
+   "imagined_after_pick_lock": {
+    "door_open": true,
+    "confidence": 1.0,
+    "note": "simulated state after pick_lock in the best imagined route"
+   },
+   "actual_after_pick_lock": {
+    "door_open": false,
+    "source": "prediction error record"
+   },
+   "n_prediction_checked_events": 6,
+   "n_prediction_errors": 1,
+   "pick_lock_prediction_error": {
+    "action": "pick_lock",
+    "effect": "door_open",
+    "expected": true,
+    "actual": false,
+    "cycle": 5,
+    "error": 1
+   },
+   "executed_completed": true,
+   "dependency": null,
+   "name": "imagined_vs_actual"
+  },
+  "revision_second_task": {
+   "criterion": "second structurally similar task shows the revision: predicted success moves toward the observed value, or the route ranking changes",
+   "passed": true,
+   "subcriteria": {
+    "predicted_success_moved_toward_observed": true,
+    "predicted_cost_rose": true,
+    "ranking_changed": true
+   },
+   "task1_before": {
+    "predicted_cost": 4.0,
+    "predicted_success": 1.0,
+    "first_plan_first_route": [
+     "go_lab_from_hall",
+     "pick_lock",
+     "go_vault",
+     "take_treasure"
+    ]
+   },
+   "task1_after": {
+    "predicted_cost": 111.6,
+    "predicted_success": 0.0965,
+    "first_plan_first_route": [
+     "go_lab_from_hall",
+     "take_key",
+     "unlock",
+     "go_vault",
+     "take_treasure"
+    ],
+    "pick_lock_route_still_in_plan_all": false
+   },
+   "task1_observed": {
+    "completed": true,
+    "pick_lock_attempts": 1,
+    "pick_lock_causal_counts": [
+     0,
+     1
+    ],
+    "pick_lock_observed_success_rate": 0.0,
+    "planner_failure_rate_pick_lock": 1.0
+   },
+   "task2_gem": {
+    "predicted_cost_pick_lock_route": 111.4,
+    "predicted_success_pick_lock_route": 0.1157,
+    "completed": true,
+    "goal_status": "done",
+    "stop_reason": "done",
+    "pick_lock_attempts": 0,
+    "pick_lock_avoided_in_second_task": true
+   },
+   "dependency": null,
+   "note": "Revision rides on existing persisted structures (causal records + planner failure rates + pair bans + the Simulator's revision-adjusted confidences, P8-7): no persistence version bump, no new stored scenario records.",
+   "name": "revision_second_task"
+  },
+  "what_if_query": {
+   "criterion": "both what-if questions answered from simulation with explicit non-empty assumptions, labelled simulated; the fragile-tool (pick_lock) route predicts lower success than the key (unlock) route",
+   "passed": true,
+   "api": "Brain.what_if",
+   "answers": {
+    "pick_lock": {
+     "question": "what if I use pick_lock?",
+     "action": "pick_lock",
+     "steps": [
+      "pick_lock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "predicted_state": {
+      "at": "vault",
+      "has_key": true,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "predicted_success": 0.1157,
+     "predicted_cost": 110.4,
+     "simulated": true,
+     "assumptions": [
+      "simulated: this answer comes from simulation, not observation",
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'pick_lock': {'door_open': True} (confidence 0.17)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 0.83)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 0.83)"
+     ],
+     "answer": "(simulated) Using 'pick_lock' then go_vault > take_treasure: predicted state {'at': 'vault', 'has_key': True, 'door_open': True, 'has_treasure': True}, predicted success 0.12, predicted cost 110.40."
+    },
+    "unlock": {
+     "question": "what if I use unlock?",
+     "action": "unlock",
+     "steps": [
+      "unlock",
+      "go_vault",
+      "take_treasure"
+     ],
+     "predicted_state": {
+      "at": "vault",
+      "has_key": true,
+      "door_open": true,
+      "has_treasure": true
+     },
+     "predicted_success": 0.5787,
+     "predicted_cost": 3.6,
+     "simulated": true,
+     "assumptions": [
+      "simulated: this answer comes from simulation, not observation",
+      "simulated: this outcome is imagined, not observed",
+      "simulated: assumed effect of 'unlock': {'door_open': True} (confidence 0.83)",
+      "simulated: assumed effect of 'go_vault': {'at': 'vault'} (confidence 0.83)",
+      "simulated: assumed effect of 'take_treasure': {'has_treasure': True} (confidence 0.83)"
+     ],
+     "answer": "(simulated) Using 'unlock' then go_vault > take_treasure: predicted state {'at': 'vault', 'has_key': True, 'door_open': True, 'has_treasure': True}, predicted success 0.58, predicted cost 3.60."
+    },
+    "literal_fragile_tool_phrasing": {
+     "question": "what if I use the fragile tool?",
+     "action": null,
+     "simulated": true,
+     "assumptions": [
+      "simulated: this answer comes from simulation, not observation",
+      "simulated: no action or changed fact could be identified in the question, so no simulation was run"
+     ],
+     "answer": "(simulated) I could not identify an action or a changed fact in that question, so I did not simulate anything rather than guess."
+    }
+   },
+   "pick_lock_predicted_success": 0.1157,
+   "unlock_predicted_success": 0.5787,
+   "dependency": null,
+   "note": "The literal 'fragile tool' phrasing is not parsed (no action or tool bears that name); the brain answers that it could not identify an action rather than guessing. W2 parser coverage is the gap, not the simulation: the parseable forms answer fully.",
+   "name": "what_if_query"
+  },
+  "counterfactual_world_model": {
+   "criterion": "counterfactual outcome differs from the actual-history simulation, the changed assumption is named in the assumptions, the result is labelled simulated, and the real world model is unchanged; the world-model entity/property edit form changes the outcome too",
+   "passed": true,
+   "api": "Brain.counterfactual",
+   "changed_assumption_named": true,
+   "baseline_met_goal": false,
+   "counterfactual_met_goal": true,
+   "difference": {
+    "at": [
+     "lab",
+     "vault"
+    ],
+    "door_open": [
+     false,
+     true
+    ],
+    "has_treasure": [
+     false,
+     true
+    ]
+   },
+   "outcome_changed": true,
+   "world_edit_outcome_changed": true,
+   "assumptions": [
+    "simulated: this is a counterfactual simulation, not observed history",
+    "simulated: assumed door_open=True (actual value was False)"
+   ],
+   "real_world_model_unchanged": true,
+   "dependency": null,
+   "name": "counterfactual_world_model"
+  },
+  "document_perception": {
+   "criterion": "single-source claim unverified with provenance file:<name>; same claim from a second independent document verified with both sources; re-reading the first document counts as duplicate; an unmatched sentence is counted ignored; a missing file fails cleanly with no partial claims",
+   "passed": true,
+   "api": "Brain.read_document",
+   "file_trust_used": 0.45,
+   "file_trust_specified_p8_2": 0.45,
+   "ask_after_one_document": [
+    "france",
+    0.45,
+    "unverified",
+    [
+     "file:paris.md"
+    ]
+   ],
+   "ask_after_two_documents": [
+    "france",
+    0.6975,
+    "verified",
+    [
+     "file:france-notes.md",
+     "file:paris.md"
+    ]
+   ],
+   "report_doc1": {
+    "stored": 2,
+    "corroborated": 0,
+    "duplicate": 0,
+    "conflict": 0,
+    "ignored_sentences": [
+     "The quick brown fox jumps."
+    ],
+    "trust": 0.45
+   },
+   "report_doc2": {
+    "stored": 0,
+    "corroborated": 1,
+    "duplicate": 0,
+    "conflict": 0,
+    "ignored_sentences": [],
+    "trust": 0.45
+   },
+   "duplicate_on_reread": 2,
+   "missing_file_error": "FileNotFoundError: /tmp/tmplem1tqdt/nope.md",
+   "missing_file_stored_no_partial_claims": true,
+   "dependency": null,
+   "name": "document_perception"
+  },
+  "image_percept": {
+   "criterion": "structured image record via the bus enters the world model as observed entities with a spatial relation; the same record via a stub specialist arrives with specialist provenance; a bare image path with no specialist is rejected, never invented objects",
+   "passed": true,
+   "api": "Brain.perceive('image', ...) via PerceptionBus",
+   "direct_record": {
+    "status": "admitted",
+    "provenance": {
+     "source": "image:lab-scene",
+     "kind": "image",
+     "image_id": "lab-scene-1",
+     "objects": 2,
+     "relations": 1
+    },
+    "key_observed": true,
+    "door_observed": true,
+    "spatial_left_of": true,
+    "key_property": "EntityProperty(value=False, status=<EpistemicStatus.observed: 'observed'>, confidence=0.95, provenance='image:lab-scene')",
+    "door_property": "EntityProperty(value=False, status=<EpistemicStatus.observed: 'observed'>, confidence=0.9, provenance='image:lab-scene')"
+   },
+   "stub_specialist": {
+    "status": "admitted",
+    "provenance": {
+     "source": "image:lab.png",
+     "kind": "image",
+     "image_id": "lab-scene-1",
+     "objects": 2,
+     "relations": 1,
+     "specialist": "stub",
+     "image": "lab.png"
+    },
+    "key_observed": true,
+    "door_observed": true,
+    "spatial_left_of": true,
+    "key_property": "EntityProperty(value=False, status=<EpistemicStatus.observed: 'observed'>, confidence=0.95, provenance='image:lab-scene')",
+    "door_property": "EntityProperty(value=False, status=<EpistemicStatus.observed: 'observed'>, confidence=0.9, provenance='image:lab-scene')"
+   },
+   "bare_path_no_specialist": {
+    "status": "rejected",
+    "provenance": {
+     "source": "image:lab.png",
+     "kind": "image",
+     "image": "lab.png",
+     "reason": "no specialist attached"
+    },
+    "rejected_without_invented_entities": true
+   },
+   "dependency": null,
+   "name": "image_percept"
+  },
+  "specialist_absent": {
+   "criterion": "brain completes the treasure task with no specialist attached, and a fake specialist's output arrives as an admitted percept with provenance naming the specialist, entering the world model as observed (never as reasoning)",
+   "passed": true,
+   "api": "Brain(specialist=...) + Brain.perceive('specialist', ...)",
+   "no_specialist_completes": true,
+   "no_specialist_cycles": 10,
+   "fake_specialist": {
+    "specialist_api": "present",
+    "specialist_available": true,
+    "percept_status": "admitted",
+    "percept_provenance": {
+     "source": "specialist:fake-specialist",
+     "kind": "specialist",
+     "image_id": "lab-scene.png",
+     "objects": 1,
+     "relations": 0,
+     "specialist": "fake-specialist",
+     "image": "lab-scene.png"
+    },
+    "provenance_names_specialist": true,
+    "key_entity_observed": true,
+    "no_thought_from_specialist_output": true
+   },
+   "dependency": null,
+   "name": "specialist_absent"
+  },
+  "pd_overgeneralisation_probe": {
+   "criterion": "simulation catches the W1->W2 over-generalisation before execution: the misfiring press-without-mould route's predicted success drops below the correct press-with-mould route's, or the simulated ranking changes in favour of the mould route",
+   "passed": true,
+   "w1_completed": true,
+   "w1_cycles": 26,
+   "w2_continued_completed": true,
+   "w2_continued_cycles": 21,
+   "press_pattern_multiplier_in_w2": 1.0,
+   "n_candidate_plans_w2": 3,
+   "candidate_plans_press_variants": [
+    "with_mould",
+    "with_mould",
+    "without_mould"
+   ],
+   "naive_cost_ranking_first": [
+    "go_lathe_from_porch",
+    "take_shears",
+    "cut",
+    "go_cellar_from_lathe",
+    "cut",
+    "pry_gate",
+    "go_kiln",
+    "cut",
+    "take_cast",
+    "press",
+    "assemble"
+   ],
+   "simulated_ranking_first": [
+    "go_lathe_from_porch",
+    "take_shears",
+    "cut",
+    "go_cellar_from_lathe",
+    "cut",
+    "pry_gate",
+    "go_kiln",
+    "cut",
+    "take_cast",
+    "press",
+    "assemble"
+   ],
+   "ranking_changed": false,
+   "route_with_mould": {
+    "names": [
+     "go_lathe_from_porch",
+     "take_shears",
+     "cut",
+     "go_cellar_from_lathe",
+     "cut",
+     "pry_gate",
+     "go_kiln",
+     "cut",
+     "take_cast",
+     "press",
+     "assemble"
+    ],
+    "variant_aware_cost": 16.44,
+    "predicted_success": 0.148,
+    "predicted_cost_simulator": 19.6407
+   },
+   "route_without_mould": {
+    "names": [
+     "go_lathe_from_porch",
+     "take_shears",
+     "cut",
+     "go_cellar_from_lathe",
+     "cut",
+     "pry_gate",
+     "go_kiln",
+     "cut",
+     "take_cast",
+     "press",
+     "assemble"
+    ],
+    "variant_aware_cost": 16.0,
+    "predicted_success": 0.0,
+    "predicted_cost_simulator": 18.1207
+   },
+   "route_names_identical": true,
+   "predicted_success_differs": true,
+   "causal_press_counts_after_w1_w2": [
+    2,
+    5
+   ],
+   "note": "Phase 9 \u00a74.1 update (same \u00a79 precedent as the persistence pins: the probe's simulation now passes Action objects, not bare names, so each step carries its variant intent): causal success is recorded per (action, effect, variant) and effects_fn/simulate resolve an action by (name, state), so the press-with-mould and press-without-mould routes simulate differently -- the misfiring route's predicted success drops below the correct route's. Name-only simulation still resolves by state and cannot separate two same-named routes from a state where only one variant applies; that is a property of names, not a simulation failure, and the probe records route_names_identical for it. The pattern multiplier (x6.0) still applies to the NAME, so it penalises the correct variant exactly as much as the misfiring one -- that over-generalisation is now caught by simulation, not by the multiplier, and variant-aware pattern application is a Phase 10 item. The duplicate-name 'cut' limitation is resolved by the same fix: effects_fn resolves each 'cut' to the variant whose preconditions hold in the current simulated state. Phase 8's note below is superseded: simulation DOES catch the misfire now (see predicted_success_differs).",
+   "name": "pd_overgeneralisation_probe"
+  },
+  "simulation_does_not_mutate": {
+   "criterion": "world model and LTM byte-identical after simulation; no new planner bans; the brain's world after the calls is the imagination start state (set deliberately, not mutated by simulation)",
+   "passed": true,
+   "world_model_unchanged": true,
+   "ltm_unchanged": true,
+   "planner_bans_unchanged": true,
+   "world_after_calls_is_imagination_start_state": true,
+   "events_added_by_design": 2,
+   "event_kinds_added": [
+    "counterfactual",
+    "simulation_compared"
+   ],
+   "last_imagination_kept": true,
+   "dependency": null,
+   "note": "State is deliberately reset to the imagination start state by the experiment itself (imagine / what_if / counterfactual simulate from the brain's current world), so the state comparison is that the post-call world equals the start state, not the pre-call end-of-task state.",
+   "name": "simulation_does_not_mutate"
+  }
+ },
+ "failures": [],
+ "worker_dependencies": [],
+ "duration_s": 0.879,
+ "n_passed": 13,
+ "n_failed": 0,
+ "n_skipped": 0,
+ "notes": [
+  "Each experiment returns {name, passed, evidence}; a failed criterion is a recorded result, not a harness crash.",
+  "Experiments run through the designed W1/W2 public APIs (Brain.imagine / what_if / counterfactual / read_document / perceive / Brain(specialist=...)); the 'api' field in each experiment says which path ran.",
+  "No evaluation answer is hardcoded: every number comes from running the brain on fixed worlds."
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "method": "CPU-burner tool (unbounded busy loop) run in the isolated subprocess path (ab.body.sandbox.IsolatedToolRunner, cpu_seconds=2, wall timeout 30s). Two burner runs plus a fast-tool control in the same runner. killed=False means the PARENT did not kill the child (the runner sets killed only when its own wall-time kill fires); exitcode -9 is the kernel's RLIMIT_CPU enforcement \u2014 soft and hard limits are equal (2s), so the kernel sends SIGXCPU and SIGKILL together and SIGKILL terminates the process. The sandbox reports only the exit code; it does not label the cause. Attribution rests on elimination: no parent kill, no wall-time timeout (timed_out=False, timeout 30s), and the tool was still burning CPU when it died.",
+ "cpu_seconds": 2,
+ "default_rlimit_cpu_seconds": 60,
+ "killed": false,
+ "observed_dead": true,
+ "exitcode": -9,
+ "signal": "SIGKILL",
+ "timed_out": false,
+ "cause_as_reported": "exitcode -9 (SIGKILL); sandbox does not label the cause \u2014 attributed to the kernel's RLIMIT_CPU enforcement by elimination (no parent kill, no wall-time timeout; tool still burning CPU)",
+ "runs": [
+  {
+   "ok": false,
+   "error": "tool process exited with code -9",
+   "timed_out": false,
+   "killed": false,
+   "observed_dead": true,
+   "exitcode": -9,
+   "signal": "SIGKILL",
+   "isolated": true,
+   "limits_applied": [
+    "RLIMIT_CPU=2s",
+    "RLIMIT_AS=512MiB"
+   ],
+   "wall_s": 7.71
+  },
+  {
+   "ok": false,
+   "error": "tool process exited with code -9",
+   "timed_out": false,
+   "killed": false,
+   "observed_dead": true,
+   "exitcode": -9,
+   "signal": "SIGKILL",
+   "isolated": true,
+   "limits_applied": [
+    "RLIMIT_CPU=2s",
+    "RLIMIT_AS=512MiB"
+   ],
+   "wall_s": 8.92
+  }
+ ],
+ "control_fast_tool": {
+  "ok": true,
+  "error": "",
+  "timed_out": false,
+  "killed": false,
+  "observed_dead": true,
+  "exitcode": 0,
+  "signal": null,
+  "isolated": true,
+  "limits_applied": [
+   "RLIMIT_CPU=2s",
+   "RLIMIT_AS=512MiB"
+  ],
+  "wall_s": 0.08
+ },
+ "python": "3.12.3"
+}
