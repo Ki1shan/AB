@@ -1,4 +1,4 @@
-# AB — Artificial Brain
+# AB - Artificial Brain
 
 An experimental, model-independent cognitive architecture written in Python. AB is a research prototype, not a finished AGI, chatbot, or production-ready autonomous system.
 
